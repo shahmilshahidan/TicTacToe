@@ -21,7 +21,7 @@ pygame.display.set_caption("Tic Tac Toe")
 # Colours
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-GRAY = (200 , 200, 200)
+GRAY = (100 , 100, 100)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
@@ -34,6 +34,9 @@ END_FONT = pygame.font.SysFont('sans serif', 40)
 
 
 def draw_grid():
+    """
+    Create the 3*3 grid on the board.
+    """
     gap = WIDTH // ROWS
 
     # Starting points
@@ -48,6 +51,12 @@ def draw_grid():
 
 # Create grid
 def prep_grid():
+    """
+    Set up game components. Initialize an array of n*n to keep track the of the gameplay.
+
+    Returns:
+        [array]: [Tic tac toe grid]
+    """
     centre = WIDTH // ROWS // 2
 
     game_array = [[None, None, None], [None, None, None], [None, None, None]]
@@ -62,6 +71,12 @@ def prep_grid():
 
 
 def click(game_array):
+    """
+    Playing the game. A player needs to click at one of the empty square to make a move.
+
+    Args:
+        game_array ([array]): [grid that tracks the gameplay]
+    """
     global x_turn, o_turn, images
 
     # Mouse options
@@ -90,6 +105,17 @@ def click(game_array):
 
 
 def winner(game_array):
+    """
+    Check if there are any winners. For every turn, check the rows, columns and diagonal.
+    Any rows, columns or diagonal that are occupied with all X or O will stop the game and 
+    announce the winner.
+
+    Args:
+        game_array ([array]): [Grid to track gameplay]
+
+    Returns:
+        [array]: [Current status of the game]
+    """
     # Check rows
     for row in range(len(game_array)):
         if (game_array[0][2] == game_array[1][2] == game_array[2][2]) and game_array[0][2] != "":
@@ -116,6 +142,16 @@ def winner(game_array):
     
 
 def drawn(game_array):
+    """
+    When all squares are filled and no rows, columns and diagonal are filled with all X or 
+    O.
+
+    Args:
+        game_array ([array]): [Grid to track gameplay]
+
+    Returns:
+        [array]: [Current gameplay]
+    """
     for i in range(len(game_array)):
         for j in range(len(game_array[i])):
             if game_array[i][j][2] == "":
@@ -126,6 +162,12 @@ def drawn(game_array):
 
 
 def display_message(content):
+    """
+    Function to display message on the background.
+
+    Args:
+        content ([string]): [Winning, losing or draw message]
+    """
     pygame.time.delay(500)
     win.fill(WHITE)
     end_text = END_FONT.render(content, 1, BLACK)
@@ -135,6 +177,9 @@ def display_message(content):
 
 
 def render():
+    """
+    Update the game background
+    """
     win.fill(WHITE)
     draw_grid()
 
@@ -147,6 +192,9 @@ def render():
 
 
 def run_game():
+    """
+    Main function to run the game
+    """
     global x_turn, o_turn, images, draw
 
     images = []
