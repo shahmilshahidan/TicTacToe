@@ -26,11 +26,11 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
 # X and O
-X_IMAGE = pygame.transform.scale(pygame.image.load('x_icon.png'), (80, 80))
-O_IMAGE = pygame.transform.scale(pygame.image.load('blue-alphabet-letter-o-thumb.gif'), (80, 80))
+X_IMAGE = pygame.transform.scale(pygame.image.load('x_player.png'), (80, 80))
+O_IMAGE = pygame.transform.scale(pygame.image.load('o_player.png'), (80, 80))
 
 # Fonts
-END_FONT = pygame.font.SysFont('sans serif', 40)
+END_FONT = pygame.font.SysFont('courier', 40)
 
 
 def draw_grid():
